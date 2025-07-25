@@ -1,0 +1,23 @@
+git clone
+--------------------------------
+git init
+
+git config --global user.name "name"
+
+git config --global user.email "email"
+
+git config --list   -> lists the configurations
+
+git add .  -> tracks file to staging area from working directory
+
+git commit -m "message"  -> saving work to repository
+
+git commit  -> a new terminal opens for adding descriptive commit message
+
+git status
+
+git log  -> shows commit code, commit msg, author, commit date
+
+git log --oneliner -> displays information in a single line
+
+git push -> push to remote repository
