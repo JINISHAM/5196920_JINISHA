@@ -1,5 +1,5 @@
 git clone
---------------------------------
+----------------------------------------------------------------------------
 git init
 
 git config --global user.name "name"
@@ -14,10 +14,24 @@ git commit -m "message"  -> saving work to repository
 
 git commit  -> a new terminal opens for adding descriptive commit message
 
+git commit --amend -m "message"   -> to update the commit msg
+
 git status
 
 git log  -> shows commit code, commit msg, author, commit date
 
-git log --oneliner -> displays information in a single line
+git log --oneline -> displays information in a single line
+
+git log -n p  -> to view first p commits
+
+git log --author = "name"  -> filters changes made by author
+
+git log --grep = "menu"  -> filter by keyword
+
+git fetch  -> will take changes at local repo itself
+
+git rm --cached <filename>   -> to unstage added file
+
+.gitignore   -> to manage files that are not be tracked.
 
 git push -> push to remote repository
