@@ -35,9 +35,3 @@ git rm --cached <filename>   -> to unstage added file
 .gitignore   -> to manage files that are not be tracked.
 
 git push -> push to remote repository
-
---------------------------------------------------------------------------------
-
-REVERT COMMAND
-
-to see how revert command works
