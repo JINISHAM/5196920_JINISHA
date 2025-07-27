@@ -1,0 +1,3 @@
+rename command
+
+git mv a.txt aa.txt
