@@ -1,1 +1,2 @@
 # 5196920_JINISHA
+![agile](SDLC/AGILE.png)
