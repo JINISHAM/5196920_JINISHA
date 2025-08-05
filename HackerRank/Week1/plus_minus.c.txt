@@ -1,0 +1,32 @@
+//calculating ratios of elements that are positive ,negative and zero
+
+#include <stdio.h>
+
+void plus_minus(int,int[]);
+
+void plus_minus(int n,int arr[]){
+    int pos_count = 0,neg_count = 0,zero_count = 0,i;
+    for(i=0;i<n;i++){
+        if(arr[i] > 0)
+            pos_count++;   //positive elements count
+        else if(arr[i] < 0)
+            neg_count++;   //negative elements count
+        else
+            zero_count++;   //zeros count
+    }
+    printf("%.6f\n",(float)pos_count/n);
+    printf("%.6f\n",(float)neg_count/n);
+    printf("%.6f\n",(float)zero_count/n);
+}
+
+int main()
+{
+    int n,i;
+    scanf("%d",&n);  //read no of elements
+    int arr[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&arr[i]);   //read array elements
+    }
+    plus_minus(n,arr);
+}
+
