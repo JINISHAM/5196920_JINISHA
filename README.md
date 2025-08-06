@@ -3,3 +3,11 @@
 
 GIT CERTIFICATE
 ![agile](GIT/git_certificate.png)
+
+C BASIC CERTIFICATE FROM SOLOLEARN
+![C BASICS](C_PROGRAMMING/c basics certificate.jpg)
+
+
+C INTERMEDIATE CERTIFICATE FROM SOLOLEARN
+![C INTERMEDIATE](C_PROGRAMMING/c intermediate cert.jpg)
+
