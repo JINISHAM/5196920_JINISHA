@@ -1,0 +1,35 @@
+//There is a collection of input strings and a collection of query strings. For each query string, determine how many times it occurs in the list of input strings. Return an array of the results.
+
+#include<stdio.h>
+#include<string.h>
+
+void matchingStrings(int n,char strings[][100],int q,char queries[][100]){
+    int i,j,output[q],count;
+    for(i=0;i<q;i++){
+        count = 0;
+        for(j=0;j<n;j++){
+            if(strcmp(queries[i],strings[j])==0)
+                count++;
+        }
+        output[i] = count;
+    }
+    for(i=0;i<q;i++){
+        printf("%d\n",output[i]);
+    }
+}
+int main()
+{
+    int n,i,q;
+    scanf("%d",&n);
+    char strings[n][100];
+    for(i=0;i<n;i++){
+        scanf("%s",strings[i]);
+    }
+    scanf("%d",&q);
+    char queries[q][100];
+    for(i=0;i<q;i++){
+        scanf("%s",queries[i]);
+        
+    }
+    matchingStrings(n,strings,q,queries);
+}

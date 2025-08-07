@@ -1,0 +1,21 @@
+//Taking 32 bit unsigned int , flip the bits and return unsigned result.
+
+#include <stdio.h>
+#include <stdint.h>
+
+int flippingBits(uint32_t n){
+    return ~n;
+}
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    uint32_t input[n];
+    for(i=0;i<n;i++){
+        scanf("%u",&input[i]);
+    }
+    for(i=0;i<n;i++){
+        printf("%u\n",flippingBits(input[i]));
+    }
+    return 0;
+}
