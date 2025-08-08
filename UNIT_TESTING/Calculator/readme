@@ -1,0 +1,36 @@
+MultiFile Approach:
+1. gcc main.c sum.c diff.c pdt.c div.c -c   -> creates object file
+   gcc *.c -c
+
+2. gcc main.o sum.o diff.o pdt.o div.o -o all.exe   -> linkes to create executable file
+   gcc *.o -o all.exe
+
+3. ./all.exe   -> to run and output is printed
+
+makefile concepts:
+
+1. target : dependencies
+   <tab>commands to generate target
+
+2. make clean  -> to clean all the object and exe files
+
+3. make  -> only first target is compiled
+
+4. make run  -> compiles and runs all the targets at a time
+
+SPECIAL VARIABLES:
+
+1. gcc $^ -c  -> considers all the files in the dependency
+2. gcc $< -c  -> considers 1st file in the dependency
+3. gcc $@     -> executable file is generated
+
+USER CREATED VARIABLES:
+
+Eg:
+1. SRCS = main.c sum.c diff.c pdt.c div.c
+object.o : $(SRCS)
+   gcc $^ -c
+all.exe : $(OBJS)
+   gcc $^ -o $@
+run: all.exe
+   ./all.exe
