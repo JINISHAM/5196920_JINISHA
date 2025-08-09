@@ -34,3 +34,17 @@ all.exe : $(OBJS)
    gcc $^ -o $@
 run: all.exe
    ./all.exe
+
+UNIT TESTING:
+void setUp(void){}   -> executed  before running each testcase
+void tearDown(void){}  -> executed  after running each testcase
+
+test_function:
+void test_sum(){
+   TEST_ASSERT_EQUAL(EXPECTED,ACTUAL);
+}
+
+to run testcase:
+UNITY BEGIN();
+RUN_TEST(test_sum);
+return UNITY_END();
