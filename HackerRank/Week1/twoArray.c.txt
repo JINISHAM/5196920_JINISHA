@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+//Ascending Sort
+void sortAsc(int n,int arr[]) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j < n; j++) {
+            if (arr[i] > arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+//Descending Sort
+void sortDes(int n, int arr[]) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = i+1; j < n; j++) {
+            if (arr[i] < arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int queries;
+    scanf("%d",&queries);
+    
+    int i,j;
+    for(i=0;i<queries;i++){
+        int n,k;
+        scanf("%d %d",&n,&k);
+        
+        int arr1[n],arr2[n];
+        for(j=0;j<n;j++){
+            scanf("%d",&arr1[j]);
+        }
+        for(j=0;j<n;j++){
+            scanf("%d",&arr2[j]);
+        }
+        sortAsc(n,arr1);
+        sortDes(n,arr2);
+        
+        int flag = 1;   //yes,permutation found
+        for(j=0;j<n;j++){
+            if((arr1[j] + arr2[j]) < k){
+                flag = 0;     //no permutation
+                break;
+            }
+        }
+        if(flag == 1)
+            printf("YES\n");
+        else
+            printf("NO\n");
+    }
+    return 0;
+    
+}

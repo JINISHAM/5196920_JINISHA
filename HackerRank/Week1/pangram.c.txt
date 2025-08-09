@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int ispanagram(char str[]){
+    int letters[26] = {0},count=0,i;
+    for(i=0;str[i]!='\0';i++){
+        if(isalpha(str[i])){
+            int index = tolower(str[i]) - 'a';
+            if(letters[index] == 0){
+                letters[index] = 1;
+                count++;
+            }    
+        }       
+    }
+    return count;
+        
+}
+int main(){
+    char str[1000];
+    scanf("%[^\n]s",str);
+    
+    int count = ispanagram(str);
+    if(count == 26)
+        printf("pangram");
+    else
+        printf("not pangram");
+    return 0;
+       
+}
