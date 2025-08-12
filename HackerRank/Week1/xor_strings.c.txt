@@ -1,0 +1,26 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main() {
+    char str1[10001];
+    char str2[10001];
+    char xor[10001];
+    int n = strlen(str1);
+    int i;
+
+    scanf("%10000s", str1);
+    scanf("%10000s", str2);
+
+    for (i = 0; str1[i] != '\0'; i++) {
+        xor[i] = ((str1[i] - '0') ^ (str2[i] - '0')) + '0';
+    }
+    xor[i] = '\0';
+
+    printf("%s\n", xor);
+    return 0;
+}
