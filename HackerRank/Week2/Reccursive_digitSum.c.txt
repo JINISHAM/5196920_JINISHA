@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+
+long long superDigit(long long n) {
+    if (n < 10)
+        return n;
+
+    long long sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+
+    return superDigit(sum);
+}
+
+int main() {
+    char n[100001];
+    long long k;
+    scanf("%s %lld", n, &k);
+
+    long long sum = 0;
+    for (int i = 0; n[i] != '\0'; i++) {
+        sum += n[i] - '0';
+    }
+
+    long long result = superDigit(sum * k);
+    printf("%lld\n", result);
+    return 0;
+}

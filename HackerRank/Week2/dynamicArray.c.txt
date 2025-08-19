@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void dynaminArray(int n,int q){
+    int **arr = (int**)malloc(n*sizeof(int*));
+    int *size = (int*)calloc(n,sizeof(int));
+    int *capacity = (int*)calloc(n,sizeof(int));
+    
+    for(int i=0;i<n;i++){
+        arr[i] = NULL;
+    }
+    
+    int lastAnswer = 0;
+    int type,x,y;
+    
+    for(int i=0;i<q;i++){
+        scanf("%d %d %d",&type,&x,&y);
+        
+        int idx = ((x^lastAnswer)%n);
+        
+        if(type == 1){
+            if(size[idx] == capacity[idx]){
+                capacity[idx] = (capacity[idx] == 0) ? 1:(2*capacity[idx]);
+                arr[idx] = (int*)realloc(arr[idx],capacity[idx]*sizeof(int)); 
+            }
+            arr[idx][size[idx]++] = y;
+            
+        }
+        
+        else if(type == 2){
+            lastAnswer = arr[idx][y%size[idx]];
+            printf("%d\n",lastAnswer);
+        }      
+    }
+    
+    for(int i=0;i<n;i++){
+            free(arr[i]);
+        }
+        free(arr);
+        free(size);
+        free(capacity);
+}
+int main()
+{
+    int n,q;
+    scanf("%d %d",&n,&q);
+    dynaminArray(n,q);
+    return 0;
+}

@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+
+int powerOfTwo(unsigned long long n){
+    if(n>0 && ((n) & (n-1)) == 0)
+        return 1;
+    else
+        return 0;
+}
+
+unsigned long long largestpowerlessthanN(unsigned long long n){
+    return 1ULL << ((unsigned long long)log2(n));
+}
+
+const char* counterGame(unsigned long long n){
+    if(n == 1)
+        return "Richard";
+    int moves = 0;  
+    while(n > 1){
+        if(powerOfTwo(n))
+            n = n/2;
+        else
+            n -= largestpowerlessthanN(n);
+        moves++;
+    }
+    return (moves % 2 == 0)? "Richard" : "Louise";   
+}
+
+int main(){
+    int t;
+    scanf("%d",&t);
+    for(int i=0;i<t;i++){
+        unsigned long long n;
+        scanf("%llu",&n);
+        printf("%s\n",counterGame(n));
+        
+    }
+    return 0;
+}

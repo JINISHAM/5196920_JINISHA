@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int compare(const void *a,const void *b){
+    return (*(int*)a - *(int*)b);
+}
+
+void zigzag(int arr[],int n){
+    qsort(arr,n,sizeof(int),compare);
+    
+    int k = (n-1)/2;
+    int temp = arr[k];
+    arr[k] = arr[n-1];
+    arr[n-1] = temp;
+    
+    int start = k+1;
+    int end = n-2;
+    while(start < end){
+        int temp1 = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp1;
+        start++;
+        end--;
+    }
+    for(int i=0;i<n;i++){
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int t;
+    scanf("%d",&t);
+    for(int i=0;i<t;i++){
+        int n;
+        scanf("%d",&n);
+        int arr[n];
+        for(int j=0;j<n;j++){
+            scanf("%d",&arr[j]);
+        }
+        zigzag(arr,n);
+    }
+    return 0;
+}
