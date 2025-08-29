@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+void minimumBribes(int n,int arr[]){
+    int bribes = 0;
+    for(int i=0;i<n;i++){
+        int sticker = arr[i];
+        if(sticker - (i+1) > 2){
+            printf("Too chaotic\n");
+            return;
+        }
+        
+        for(int j=(sticker - 2 > 0 ? sticker-2 : 0 ); j<i;j++){
+            if(arr[j] > sticker){
+                bribes++;
+            }
+        }
+    }
+    printf("%d\n",bribes);
+}
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        int n;
+        scanf("%d",&n);
+        int arr[n];
+        for(int i=0;i<n;i++){
+            scanf("%d",&arr[i]);
+        }
+        minimumBribes(n,arr);
+    }
+    return 0;
+}

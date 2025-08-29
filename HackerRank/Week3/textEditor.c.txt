@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+#define MAX 100000
+#define HISTORY 1000
+
+char text[MAX] = "";
+char **history;
+int top = -1;
+
+
+
+void saveState(){
+     history[++top] = strdup(text);
+}
+
+void append(char *str){
+    saveState();
+    strcat(text,str); 
+}
+
+void delete(int k){
+    saveState();
+    int len = strlen(text);
+    if(k <= len){
+        text[len-k] = '\0';
+    }
+    else{
+        text[0] = '\0';
+    }
+        
+}
+
+void print(int x){
+    if (x > 0 && x <= strlen(text)) {
+        printf("%c\n", text[x - 1]);
+    }
+
+}
+
+void undo(){
+    if(top>=0){
+        strcpy(text,history[top]);
+        free(history[top]); 
+        top--;
+    }
+}
+
+int main() {
+    int q;
+    scanf("%d",&q);
+    history = malloc(q * sizeof(char*));
+    
+    while(q--){
+        int type;
+        scanf("%d",&type);
+        
+        if(type == 1){
+            char str[10001];
+            scanf("%s",str);
+            append(str);
+        }
+        else if(type == 2){
+            int k;
+            scanf("%d",&k);
+            delete(k);
+        }
+        else if(type == 3){
+            int x;
+            scanf("%d",&x);
+            print(x);
+        }
+        else if(type == 4){
+            undo();
+        }
+    }
+    return 0;
+}

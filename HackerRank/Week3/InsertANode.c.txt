@@ -1,0 +1,14 @@
+SinglyLinkedListNode* insertNodeAtPosition(SinglyLinkedListNode* llist, int data, int position) {
+    SinglyLinkedListNode *t;
+    SinglyLinkedListNode *p = llist;
+    t = (SinglyLinkedListNode *)malloc(sizeof(SinglyLinkedListNode));
+    t->data = data;
+    
+    for(int i=0;i<position-1;i++)
+        p = p->next;
+    
+    t->next = p->next;
+    p->next = t;
+    
+    return llist;
+}

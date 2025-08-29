@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+struct Node{
+    int data;
+    struct Node *next;
+}*front = NULL,*rear = NULL;
+
+void enqueue(int x){
+    struct Node *t;
+    t = (struct Node*)malloc(sizeof(struct Node));
+    if(t==NULL)
+        printf("Queue is full");
+    else{
+        t->data = x;
+        t->next = NULL;
+        if(front == NULL){
+            front = rear = t;
+        }
+        else{
+            rear->next = t;
+            rear = t;
+        }
+    }
+}
+
+int dequeue(){
+    int x = -1;
+    struct Node *t;
+    if(front == NULL)
+        printf("Queue is empty");
+    else{
+        x = front->data;
+        t = front;
+        front = front->next;
+        free(t);
+    }
+    return x;
+}
+
+void print(){
+    struct Node *p = front;
+    printf("%d\n",p->data);
+}
+
+int main() {
+    int q,x;
+    scanf("%d",&q);
+    while(q--){
+        int type;
+        scanf("%d",&type);
+        
+        if(type == 1){
+            int x;
+            scanf("%d",&x);
+            enqueue(x);
+        }
+        else if(type == 2){
+            x = dequeue();
+        }
+        else{
+            print();
+        }
+    }
+    return 0;
+}

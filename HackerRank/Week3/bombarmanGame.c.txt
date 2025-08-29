@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+void detonate(int r,int c,char arr[][c],char result[][c]){
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            result[i][j] = 'O';
+        }
+    }   
+    
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            if(arr[i][j] == 'O'){
+                result[i][j] = '.';
+                if(i>0) result[i-1][j] = '.';
+                if(i<r-1) result[i+1][j] = '.';
+                if(j>0) result[i][j-1] = '.';
+                if(j<c-1) result[i][j+1] = '.';
+                
+            }
+        }
+    }
+}
+int main()
+{
+    int r,c,n;
+    scanf("%d %d %d",&r,&c,&n);
+    char arr[r][c];
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            scanf(" %c",&arr[i][j]);
+        }
+    }
+    
+    if(n==1){
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                printf("%c",arr[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    
+    else if(n%2==0){
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                printf("O");
+            }
+            printf("\n");
+        }
+    }
+    
+    else{
+        char first[r][c],second[r][c];
+        detonate(r,c,arr,first); // for n=3
+        detonate(r,c,first,second); //for n=5;
+        if(n % 4 == 3){
+            for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                    printf("%c",first[i][j]);
+                }
+                printf("\n");
+            }
+        }
+        else if(n % 4 == 1){
+            for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                    printf("%c",second[i][j]);
+                }
+                printf("\n");
+            }
+        }
+    }
+    return 0;
+}
